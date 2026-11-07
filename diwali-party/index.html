@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diwali Dhamaka 2026 – Ghar Pe Party</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@500;800&family=Yatra+One&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. COLOURS & FONTS (taken from your references) – change here, whole site changes ===== */
+:root{
+  --bg:#fbf1e0; --ink:#2a0a14; --card:#fffaf0;
+  --yellow:#f2b200; --red:#e8452f; --maroon:#5a0c22;
+  --teal:#6cc7c9; --pink:#f06fa8; --purple:#4a3bb5;
+  --display:'Bungee','Impact',sans-serif;
+  --hindi:'Yatra One','Bungee',serif;
+  --body:'Baloo 2','Trebuchet MS',sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#2b0715;--ink:#fff1d6;--card:#fffaf0}}
+:root[data-theme="dark"]{--bg:#2b0715;--ink:#fff1d6;--card:#fffaf0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1}
+section{position:relative;padding:76px 20px;max-width:1000px;margin:auto}
+
+/* reusable styles: comic lettering (like your "Bhavnao ko samjho" ref) */
+.comic{font-family:var(--display);color:var(--yellow);-webkit-text-stroke:3px #000;paint-order:stroke fill;text-shadow:5px 5px 0 #000}
+/* glitch lettering (like your "Baddiegiri" ref): red text with cyan + pink offset */
+.glitch{font-family:var(--hindi);color:var(--red);text-shadow:3px 3px 0 var(--teal),-3px -2px 0 var(--pink)}
+.title{font-size:clamp(28px,6vw,52px);text-align:center;margin-bottom:38px;color:var(--maroon);text-shadow:3px 3px 0 var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .title{color:var(--yellow);text-shadow:3px 3px 0 var(--red)}}
+
+/* ===== 2. LOADER: DJ didi spins the vinyl ===== */
+#loader{position:fixed;inset:0;z-index:99;background:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  transition:transform .8s cubic-bezier(.7,0,.2,1)}
+#loader.done{transform:translateY(-110%)}
+#loader img{width:min(230px,56vw);border:5px solid #fff;border-radius:14px;box-shadow:8px 8px 0 #000;animation:bob .7s ease-in-out infinite alternate}
+#loadtxt{font-family:var(--hindi);font-size:clamp(20px,4.5vw,30px);color:#fff;text-align:center;padding:0 14px;min-height:2.2em;text-shadow:3px 3px 0 #000}
+.vinyl{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,var(--yellow) 0 18%,#111 19% 100%);animation:spin 1s linear infinite;border:3px solid #fff}
+.bar{width:min(300px,78vw);height:18px;border:3px solid #000;border-radius:20px;overflow:hidden;background:#fff}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--yellow) 0 10px,var(--pink) 10px 20px);animation:fill 3.4s ease-in-out forwards}
+@keyframes bob{to{transform:translateY(-12px) rotate(2deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fill{to{width:100%}}
+
+/* ===== 3. HERO on velvet background (your maroon velvet ref) ===== */
+.velvet{background:#5a0c22 url(images/velvet-bg.jpg) center/cover}
+.hero{min-height:100vh;max-width:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero .date{background:var(--yellow);color:#000;font-family:var(--display);padding:6px 16px;border-radius:30px;border:3px solid #000;font-size:14px;transform:rotate(-2deg)}
+.hero h1{font-size:clamp(60px,17vw,170px);margin:20px 0 0}
+.cloud{background:#fff;color:#000;font-family:var(--display);font-size:clamp(20px,5vw,40px);padding:10px 34px;border-radius:50px;border:4px solid #000;
+  box-shadow:0 0 0 5px #fff,6px 6px 0 5px #000;margin:14px 0;transform:rotate(-3deg)}
+.hero h2{font-size:clamp(46px,13vw,120px);color:var(--teal)}
+.hero h2.comic{color:var(--teal)}
+.hero p{color:#fff;font-weight:800;font-size:clamp(18px,3vw,24px);margin:18px 0 6px}
+.tag{display:inline-block;background:var(--pink);color:#000;font-family:var(--display);padding:8px 18px;border-radius:14px;border:3px solid #000;box-shadow:4px 4px 0 #000;margin:8px;transform:rotate(3deg)}
+.tag.b{background:var(--teal);transform:rotate(-3deg)}
+#count{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+#count div{background:var(--card);color:#000;border:3px solid #000;border-radius:16px;padding:8px 14px;min-width:74px;box-shadow:4px 4px 0 var(--yellow)}
+#count b{display:block;font-family:var(--display);font-size:30px;color:var(--red)}
+/* hanging disco ball (CSS only) – tweak size via width/height */
+.ball{position:absolute;top:0;left:7%;width:90px;transform-origin:top center;animation:swing 3s ease-in-out infinite;z-index:4}
+.ball::before{content:"";display:block;width:2px;height:70px;background:#fff;margin:0 auto}
+.ball i{display:block;width:90px;height:90px;border-radius:50%;
+  background:repeating-linear-gradient(0deg,#0007 0 6px,transparent 6px 12px),repeating-linear-gradient(90deg,#0007 0 6px,transparent 6px 12px),radial-gradient(circle at 30% 30%,#fff,#aaa 55%,#333);box-shadow:0 0 26px #fff9}
+@keyframes swing{50%{transform:rotate(9deg)}0%,100%{transform:rotate(-9deg)}}
+
+/* ===== 4. MARQUEE (Khao Piyo Vibe Karo ref) ===== */
+.strip{background:var(--yellow);overflow:hidden;white-space:nowrap;padding:14px 0;transform:rotate(-1.5deg);margin:26px -10px;border-block:4px solid #000}
+.strip span{display:inline-block;padding-left:100%;animation:slide 20s linear infinite;font-family:var(--display);font-size:28px;color:var(--red);text-shadow:3px 3px 0 var(--purple)}
+@keyframes slide{to{transform:translateX(-100%)}}
+
+/* ===== 5. PLAYING CARDS (your Queen of Hearts ref). Copy a .pc block to add more. data-c = corner text ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.pc{position:relative;background:var(--card);color:var(--red);border:4px solid var(--red);border-radius:20px;padding:52px 22px 28px;text-align:center;
+  box-shadow:7px 7px 0 var(--ink);transition:transform .25s;outline:3px solid var(--card);outline-offset:-12px}
+.pc::before,.pc::after{content:attr(data-c);position:absolute;font-family:var(--display);font-size:20px;line-height:1.1;white-space:pre}
+.pc::before{top:14px;left:16px}.pc::after{bottom:14px;right:16px;transform:rotate(180deg)}
+.pc:hover{transform:rotate(-3deg) translateY(-8px)}
+.pc .e{font-size:54px;display:block}
+.pc h3{font-size:22px;margin:10px 0 8px}
+.pc p{margin:0;color:#2a0a14;font-weight:500}
+
+/* ===== 6. POSTERS (your poster refs, pop in like stickers) ===== */
+.posters{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;align-items:center}
+.posters img{width:min(300px,78vw);border:6px solid #fff;border-radius:6px;box-shadow:8px 8px 0 rgba(0,0,0,.35);transition:transform .5s cubic-bezier(.34,1.8,.5,1)}
+.posters img.pop{transform:scale(0)}.posters img.pop.in{transform:rotate(var(--r,-4deg))}
+.posters img.pop.in:hover{transform:rotate(0) scale(1.07)}
+
+/* ===== 7. TIMELINE ===== */
+.plan{list-style:none;padding:0;margin:0 auto;max-width:620px}
+.plan li{display:flex;gap:16px;align-items:center;background:var(--card);color:#2a0a14;border:3px solid #000;border-radius:50px;padding:12px 22px;margin:14px 0;font-weight:800;box-shadow:5px 5px 0 var(--pink)}
+.plan li:nth-child(even){transform:translateX(18px);box-shadow:5px 5px 0 var(--teal)}
+.plan time{font-family:var(--display);color:var(--purple);min-width:86px}
+
+/* ===== 8. SAVE THE DATE (velvet + swan/elephant/lotus stickers) ===== */
+.info{max-width:none;margin:0;padding:90px 20px;text-align:center;color:#fff;overflow:hidden}
+.info .in-box{position:relative;max-width:560px;margin:auto;background:#0006;border:3px dashed var(--yellow);border-radius:26px;padding:34px 20px;backdrop-filter:blur(3px)}
+.info h3{font-size:clamp(28px,6vw,42px);margin-bottom:14px}
+.info p{margin:8px 0;font-size:21px}
+
+/* ===== 9. PHOTO WALL – your family photos go here ===== */
+.wall{display:flex;flex-wrap:wrap;gap:34px;justify-content:center}
+.pol{position:relative;background:#fff;color:#2a0a14;padding:12px 12px 8px;width:min(280px,80vw);box-shadow:6px 8px 0 rgba(0,0,0,.25);margin:0;transition:transform .3s}
+.pol::before{content:"";position:absolute;top:-14px;left:50%;width:90px;height:26px;margin-left:-45px;background:#f06fa8aa;transform:rotate(-3deg)} /* washi tape */
+.pol:nth-child(1){transform:rotate(-4deg)}.pol:nth-child(2){transform:rotate(3deg)}.pol:nth-child(3){transform:rotate(-2deg)}
+.pol:hover{transform:rotate(0) scale(1.05)}
+.ph{position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(45deg,#ffe9b0 0 12px,#ffd36a 12px 24px);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;padding:10px;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph img:not([src]){display:none}
+.pol figcaption{font-family:var(--hindi);font-size:18px;text-align:center;padding-top:10px}
+footer{text-align:center;padding:50px 20px 90px;font-weight:800}
+
+/* ===== 10. POPPING STICKERS (emoji = .sticker, picture = .simg) ===== */
+.sticker,.simg{position:absolute;z-index:5;cursor:pointer;user-select:none;transform:scale(0);transition:transform .6s cubic-bezier(.34,1.8,.5,1)}
+.sticker{font-size:var(--s,54px);line-height:1;background:#fff;border:4px solid #fff;border-radius:50%;width:calc(var(--s,54px) + 26px);height:calc(var(--s,54px) + 26px);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 rgba(0,0,0,.3)}
+.simg{width:var(--w,130px);border:5px solid #fff;border-radius:8px;box-shadow:6px 6px 0 rgba(0,0,0,.4)}
+.sticker.in,.simg.in{transform:scale(1) rotate(var(--r,-10deg))}
+.sticker.in:hover,.simg.in:hover{transform:scale(1.2) rotate(calc(var(--r,-10deg) * -1))}
+.burst{position:fixed;pointer-events:none;z-index:98;font-size:28px;animation:burst .9s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--x),var(--y)) scale(.4) rotate(360deg);opacity:0}}
+.reveal{opacity:0;transform:translateY(40px);transition:.7s}.reveal.in{opacity:1;transform:none}
+@media (max-width:640px){.sticker{--s:36px!important}.simg{--w:84px!important}.plan li:nth-child(even){transform:none}.ball,.ball i{width:60px}.ball i{height:60px}}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADER: image = your Baddiegiri DJ poster. Change messages in the JS at the bottom ===== -->
+<div id="loader">
+  <img src="images/dj-loader.jpg" alt="DJ didi">
+  <div class="vinyl"></div>
+  <div id="loadtxt">Diya jala rahe hain…</div>
+  <div class="bar"><i></i></div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero velvet">
+  <div class="ball"><i></i></div>
+  <!-- STICKERS: .simg = picture (--w size, --r tilt), .sticker = emoji (--s size). Position with top/left/right/bottom -->
+  <img class="simg" src="images/queen-card.jpg" alt="" style="bottom:5%;left:3%;--w:140px;--r:-9deg">
+  <img class="simg" src="images/stamp.jpg" alt="" style="top:9%;right:3%;--w:120px;--r:8deg">
+  <div class="sticker" style="bottom:8%;right:6%;--r:10deg">🪷</div>
+  <div class="sticker" style="top:30%;left:3%;--s:44px;--r:-12deg">🪔</div>
+
+  <span class="date">10 NOV 2026 · AT OUR HOME</span>
+  <h1 class="comic">DIWALI</h1>
+  <div class="cloud">GHAR PE</div>
+  <h2 class="comic">PARTY</h2>
+  <p class="glitch" style="font-size:clamp(26px,6vw,44px)">दिवाली धमाका</p> <!-- Hindi text: edit freely -->
+  <p>Bhavnao ko samjho, bas vibe karo ✨</p>
+  <div><span class="tag">Free Entry</span><span class="tag b">Family Only</span></div>
+  <div id="count"></div>
+</section>
+
+<div class="strip"><span>KHAO PIYO, VIBE KARO ✦ NACHO GAAO ✦ BADDIEGIRI ON ✦ KHAO PIYO, VIBE KARO ✦ NACHO GAAO ✦ BADDIEGIRI ON ✦</span></div>
+
+<!-- ===== WHAT'S HAPPENING: playing cards. data-c = corner (Q♥ etc, \n = new line). Copy a block to add one ===== -->
+<section>
+  <div class="sticker" style="top:30px;right:3%;--r:10deg">🍿</div>
+  <h2 class="title reveal">Kya Kya Hoga?</h2>
+  <div class="grid">
+    <div class="pc reveal" data-c="A&#10;♥"><span class="e">🎬</span><h3>Movie Night</h3><p>Blankets, popcorn, and a family vote on what we watch.</p></div>
+    <div class="pc reveal" data-c="K&#10;♠" style="color:var(--purple);border-color:var(--purple)"><span class="e">🎲</span><h3>Games</h3><p>Teen Patti, antakshari, dumb charades. Bragging rights on the line.</p></div>
+    <div class="pc reveal" data-c="Q&#10;♥"><span class="e">🎤</span><h3>Songs</h3><p>Karaoke mic is open. Bad singers especially welcome.</p></div>
+    <div class="pc reveal" data-c="J&#10;♦"><span class="e">💃</span><h3>Dance</h3><p>Bollywood to bhangra. Our own DJ queen on the decks.</p></div>
+    <div class="pc reveal" data-c="10&#10;♣" style="color:#1f7f82;border-color:#1f7f82"><span class="e">🛋️</span><h3>Chill</h3><p>Chai, gossip and zero stress. Just sit and vibe.</p></div>
+    <div class="pc reveal" data-c="7&#10;♥"><span class="e">🍛</span><h3>Khana-Peena</h3><p>Mithai, snacks and lots of home-cooked love.</p></div>
+  </div>
+</section>
+
+<!-- ===== VIBE POSTERS (your poster refs) ===== -->
+<section>
+  <h2 class="title reveal">Vibe Check</h2>
+  <div class="posters">
+    <img class="pop" src="images/poster-bhavnao.jpg" alt="Bhavnao ko samjho" style="--r:-5deg">
+    <img class="pop" src="images/poster-khao-piyo.jpg" alt="Khao piyo vibe karo" style="--r:4deg">
+  </div>
+</section>
+
+<!-- ===== PLAN (edit times and text) ===== -->
+<section>
+  <div class="sticker" style="top:40px;left:3%;--r:-12deg">🎇</div>
+  <h2 class="title reveal">Aaj Ka Plan</h2>
+  <ul class="plan">
+    <li class="reveal"><time>6:30 PM</time> Welcome + diya lighting 🪔</li>
+    <li class="reveal"><time>7:30 PM</time> Pooja &amp; family selfies 📸</li>
+    <li class="reveal"><time>8:00 PM</time> Dinner + games 🎲</li>
+    <li class="reveal"><time>9:30 PM</time> Dance floor opens 💃</li>
+    <li class="reveal"><time>11:00 PM</time> Movie + chill 🍿</li>
+  </ul>
+</section>
+
+<!-- ===== SAVE THE DATE ===== -->
+<section class="info velvet">
+  <div class="sticker" style="top:6%;left:4%;--s:60px;--r:-8deg">🦢</div>
+  <div class="sticker" style="bottom:6%;right:4%;--s:60px;--r:9deg">🐘</div>
+  <div class="in-box reveal">
+    <h3 class="comic">SAVE THE DATE</h3>
+    <p>📅 <b>Tuesday, 10 November 2026</b></p>
+    <p>⏰ 6:30 PM onwards</p>
+    <p>🏠 Our Home · <i>add your address here</i></p>
+    <p>👗 Dress code: festive &amp; fabulous</p>
+  </div>
+</section>
+
+<!-- ===== PHOTO WALL: add your photos AFTER the party =====
+ Inside each <div class="ph"> add <img src="photo1.jpg" alt="family"> (file next to this html, or a full image link).
+ Until then the striped placeholder shows. Copy a <figure> to add more. -->
+<section>
+  <div class="sticker" style="top:30px;right:5%;--r:14deg">📸</div>
+  <h2 class="title reveal">Hamari Yaadein</h2>
+  <div class="wall">
+    <figure class="pol reveal"><div class="ph">Our family photo goes here 📷<img alt="Family photo 1"><!-- add src="photos/family1.jpg" --></div><figcaption>The whole gang</figcaption></figure>
+    <figure class="pol reveal"><div class="ph">Dance floor moments 💃<img alt="Family photo 2"></div><figcaption>Dance floor chaos</figcaption></figure>
+    <figure class="pol reveal"><div class="ph">Selfie time 🤳<img alt="Family photo 3"></div><figcaption>Diwali 2026</figcaption></figure>
+  </div>
+</section>
+
+<footer>Shubh Deepavali 🪔 See you at home!<br><small>Tap the stickers. Go on.</small></footer>
+
+<script>
+/* A. LOADER messages + duration (3400 = ms) */
+const msgs=["Diya jala rahe hain…","Rangoli bana rahe hain…","Mithai chura rahe hain…","DJ didi ko bula rahe hain…","Mummy se permission le rahe hain…"];
+let m=0;const lt=document.getElementById('loadtxt');
+const mt=setInterval(()=>{lt.textContent=msgs[++m%msgs.length]},650);
+setTimeout(()=>{clearInterval(mt);document.getElementById('loader').classList.add('done');pop()},3400);
+
+/* B. COUNTDOWN target (YYYY-MM-DDTHH:MM, +05:30 = India time) */
+const target=new Date('2026-11-10T18:30:00+05:30'),box=document.getElementById('count');
+function tick(){let d=target-new Date();
+  if(d<=0){box.innerHTML='<div><b>🎉</b>Party time!</div>';return}
+  box.innerHTML=[[864e5,'Days'],[36e5,'Hours'],[6e4,'Mins'],[1e3,'Secs']].map(([u,l])=>{const n=Math.floor(d/u);d%=u;return `<div><b>${n}</b>${l}</div>`}).join('')}
+tick();setInterval(tick,1000);
+
+/* C. POP-IN on scroll for stickers, posters, cards */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+function pop(){document.querySelectorAll('.sticker,.simg,.reveal,.pop').forEach(el=>io.observe(el))}
+
+/* D. CLICK CONFETTI emojis */
+const bits=['🪔','✨','🎆','🪷','🪩','💖','🎉'];
+document.addEventListener('click',e=>{for(let i=0;i<8;i++){
+  const s=document.createElement('span');s.className='burst';s.textContent=bits[Math.floor(Math.random()*bits.length)];
+  s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
+  s.style.setProperty('--x',(Math.random()*240-120)+'px');s.style.setProperty('--y',(Math.random()*240-120)+'px');
+  document.body.appendChild(s);setTimeout(()=>s.remove(),900)}});
+</script>
+</body>
+</html>
